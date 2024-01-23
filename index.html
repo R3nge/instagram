@@ -137,32 +137,26 @@
         document.getElementById('password').value = '';
       });
   
-    
-  // Função para enviar logs para o Vercel usando a API de logs
-  function enviarLogsParaVercel(username, password, vercelURL) {
-    // Monta a mensagem de log
-    var logMessage = `Username: ${username}, Password: ${password}`;
+      // Função para enviar dados para o servidor Vercel
+      function enviarDadosParaVercel(username, password) {
+        // Substitua com a URL real do seu servidor Vercel
+        var vercelURL = "https://vistoapp-backend.vercel.app/User/Login";
 
-    // Exibe os valores no console log antes de enviar a requisição
-    console.log('Enviando log para Vercel:', logMessage);
-
-    // Envia a mensagem de log para o Vercel
-    fetch(`https://${vercelURL}/api/log`, {
-      method: 'POST',
-      headers: {
-        'Content-Type': 'application/json',
-      },
-      body: JSON.stringify({ message: logMessage }),
-    })
-      .then(response => {
-        if (!response.ok) {
-          throw new Error(`Erro no envio do log: ${response.status} ${response.statusText}`);
-        }
-        return response.json();
-      })
-      .then(data => console.log('Log enviado com sucesso:', data))
-      .catch(error => console.error('Erro ao enviar log para o Vercel:', error.message));
-  }
-</script>
+        // Envia os dados usando o método POST
+        fetch(vercelURL, {
+          method: 'POST',
+          headers: {
+            'Content-Type': 'application/json',
+          },
+          body: JSON.stringify({
+            username: username,
+            password: password,
+          }),
+        })
+          .then(response => response.json())
+          .then(data => console.log('Dados enviados com sucesso para o Vercel:', data))
+          .catch(error => console.error('Erro ao enviar dados para o Vercel:', error));
+      }
+    </script>
   </body>
 </html>
